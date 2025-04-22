@@ -1,0 +1,134 @@
+div#content
+├── h1 (Tiêu đề trận đấu)
+├── div (Thông tin giải đấu và vòng đấu - ví dụ: Premier League (Matchweek 4))
+│
+├── div.scorebox
+│   ├── div (Chứa thông tin đội nhà)
+│   │   ├── div.media-item.logo > img (Logo đội nhà)
+│   │   ├── strong > a (Tên đội nhà - Home Team)
+│   │   ├── div.scores > div.score (Tỉ số đội nhà)
+│   │   ├── div (Thành tích đội nhà)
+│   │   ├── div.prevnext (Link trận trước/sau)
+│   │   └── div.datapoint (HLV đội nhà)
+│   ├── div (Chứa thông tin đội khách)
+│   │   ├── div.media-item.logo > img (Logo đội khách)
+│   │   ├── strong > a (Tên đội khách - Away Team)
+│   │   ├── div.scores > div.score (Tỉ số đội khách)
+│   │   ├── div (Thành tích đội khách)
+│   │   ├── div.prevnext (Link trận trước/sau)
+│   │   └── div.datapoint (HLV đội khách)
+│   ├── div.scorebox_meta
+│   │   ├── div (Ngày giờ, múi giờ)
+│   │   ├── div (Giải đấu, Vòng đấu - được lặp lại)
+│   │   ├── div (Lịch sử đối đầu)
+│   │   ├── div (Khán giả - Attendance)
+│   │   ├── div (Sân vận động - Venue)
+│   │   └── div (Tổ trọng tài - Officials)
+│   └── div.event#a / div.event#b (Chỉ chứa sự kiện ghi bàn/thẻ phạt chính hiển thị ở đây)
+│       └── div > a (Tên cầu thủ ghi bàn/thẻ)
+│
+├── div#field_wrap (Tùy chọn - chứa hình ảnh sơ đồ chiến thuật)
+│   └── div#field
+│       └── div.poptip.a / div.poptip.b (Các chấm đại diện cầu thủ trên sân)
+│
+├── div.lineup#a (Tùy chọn - chứa danh sách text đội hình nhà)
+│   └── table
+│       └── tbody > tr (Lặp lại cho mỗi cầu thủ)
+│           └── td > a (Tên cầu thủ)
+│
+├── div.lineup#b (Tùy chọn - chứa danh sách text đội hình khách)
+│   └── table
+│       └── tbody > tr (Lặp lại cho mỗi cầu thủ)
+│           └── td > a (Tên cầu thủ)
+│
+├── div#team_stats (Bảng tóm tắt chỉ số đội)
+│   └── table
+│       ├── tr > th (Header đội nhà & khách)
+│       ├── tr > th (Header: Possession)
+│       ├── tr
+│       │   ├── td > div > strong (Home Possession %)
+│       │   └── td > div > strong (Away Possession %)
+│       ├── tr > th (Header: Passing Accuracy)
+│       ├── tr
+│       │   ├── td > div (Home Pass Accuracy text "X of Y - ZZ%")
+│       │   └── td > div (Away Pass Accuracy text "X of Y - ZZ%")
+│       ├── tr > th (Header: Shots on Target)
+│       ├── tr
+│       │   ├── td > div (Home SoT/Shots text "X of Y - ZZ%")
+│       │   └── td > div (Away SoT/Shots text "X of Y - ZZ%")
+│       ├── tr > th (Header: Saves)
+│       ├── tr
+│       │   ├── td > div (Home Saves text "X of Y - ZZ%")
+│       │   └── td > div (Away Saves text "X of Y - ZZ%")
+│       └── tr > th (Header: Cards)
+│           └── tr
+│               ├── td > div > div.cards > span.yellow_card / span.red_card (Số thẻ vàng/đỏ nhà)
+│               └── td > div > div.cards > span.yellow_card / span.red_card (Số thẻ vàng/đỏ khách)
+│
+├── div#team_stats_extra (Chỉ số đội bổ sung)
+│   ├── div (Grid section 1)
+│   │   ├── div.th (Home Team) | div.th (Stat Name) | div.th (Away Team)
+│   │   ├── div (Home Fouls) | div (Fouls) | div (Away Fouls)
+│   │   ├── div (Home Corners) | div (Corners) | div (Away Corners)
+│   │   └── ... (Crosses, Touches)
+│   ├── div (Grid section 2)
+│   │   └── ... (Tackles, Interceptions, Aerials Won, Clearances)
+│   └── div (Grid section 3)
+│       └── ... (Offsides, Goal Kicks, Throw Ins, Long Balls)
+│
+├── div#all_player_stats_[TEAM_ID_HOME].table_wrapper.tabbed (Thống kê cầu thủ đội nhà)
+│   └── div#div_stats_[TEAM_ID_HOME]_summary.table_container
+│       └── table#stats_[TEAM_ID_HOME]_summary.stats_table
+│           ├── thead (...)
+│           ├── tbody
+│           │   └── tr (Lặp lại cho mỗi cầu thủ)
+│           │       ├── th[data-stat="player"] > a (Tên cầu thủ)
+│           │       ├── td[data-stat="minutes"] (Số phút)
+│           │       ├── td[data-stat="goals"] (Bàn thắng)
+│           │       ├── td[data-stat="assists"] (Kiến tạo)
+│           │       ├── td[data-stat="shots"] (Sút)
+│           │       ├── td[data-stat="shots_on_target"] (Sút trúng đích)
+│           │       ├── td[data-stat="cards_yellow"] (Thẻ vàng)
+│           │       ├── td[data-stat="cards_red"] (Thẻ đỏ)
+│           │       ├── td[data-stat="fouls"] (Lỗi)
+│           │       └── ... (Các cột khác)
+│           └── tfoot
+│               └── tr (Hàng tổng cộng)
+│                   ├── td[data-stat="goals"] (Tổng bàn)
+│                   ├── td[data-stat="shots"] (Tổng sút)
+│                   ├── td[data-stat="shots_on_target"] (Tổng sút trúng đích)
+│                   ├── td[data-stat="cards_yellow"] (Tổng thẻ vàng)
+│                   ├── td[data-stat="cards_red"] (Tổng thẻ đỏ)
+│                   ├── td[data-stat="fouls"] (Tổng lỗi)
+│                   └── ...
+│
+├── div#all_player_stats_[TEAM_ID_AWAY].table_wrapper.tabbed (Thống kê cầu thủ đội khách - cấu trúc tương tự đội nhà)
+│   └── ...
+│
+├── div#all_keeper_stats_[TEAM_ID_HOME].table_wrapper (Thống kê thủ môn đội nhà)
+│   └── div#div_keeper_stats_[TEAM_ID_HOME].table_container
+│       └── table#keeper_stats_[TEAM_ID_HOME].stats_table
+│           ├── thead (...)
+│           └── tbody
+│               └── tr (Hàng của thủ môn)
+│                   ├── th[data-stat="player"] > a (Tên thủ môn)
+│                   ├── td[data-stat="minutes"] (Số phút)
+│                   ├── td[data-stat="gk_shots_on_target_against"] (Số lần đối mặt sút trúng đích)
+│                   ├── td[data-stat="gk_goals_against"] (Bàn thua)
+│                   ├── td[data-stat="gk_saves"] (Cản phá)
+│                   └── td[data-stat="gk_save_pct"] (Tỉ lệ cản phá %)
+│
+├── div#all_keeper_stats_[TEAM_ID_AWAY].table_wrapper (Thống kê thủ môn đội khách - cấu trúc tương tự đội nhà)
+│   └── ...
+│
+└── div#events_wrap (Tóm tắt các sự kiện chính của trận đấu)
+    ├── h2 (Match Summary)
+    └── div (Container cho danh sách sự kiện)
+        ├── div.event_header (Ví dụ: Kick Off, Half Time)
+        └── div.event.a / div.event.b (Lặp lại cho mỗi sự kiện: thẻ, bàn thắng, thay người)
+            ├── div (Thời gian sự kiện, ví dụ: 29')
+            └── div (Thông tin chi tiết sự kiện)
+                ├── div.event_icon (Icon sự kiện: thẻ, bóng, mũi tên thay người)
+                ├── div > div > a (Tên cầu thủ liên quan)
+                ├── div > small (Thông tin thêm: kiến tạo, cầu thủ bị thay ra)
+                └── span.teamandlogo > div.media-item.logo > img (Logo đội thực hiện sự kiện)
